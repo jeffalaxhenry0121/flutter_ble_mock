@@ -1,0 +1,28 @@
+name: flutter_ble_mock
+description: BLE 통신 기능을 Mock으로 구현한 Flutter 샘플 프로젝트
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.4.0
+  riverpod_annotation: ^2.3.0
+  flutter_hooks: ^0.20.0
+  hooks_riverpod: ^2.4.0
+  logger: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  riverpod_generator: ^2.3.0
+  build_runner: ^2.4.0
+
+flutter:
+  uses-material-design: true
