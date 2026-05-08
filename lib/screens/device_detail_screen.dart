@@ -129,8 +129,8 @@ class _DeviceInfoCard extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   decoration: BoxDecoration(
                     color: isConnected
-                        ? Colors.green.withOpacity(0.15)
-                        : Colors.grey.withOpacity(0.15),
+                        ? Colors.green.withValues(alpha: 0.15)
+                        : Colors.grey.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
