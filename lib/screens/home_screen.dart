@@ -62,6 +62,8 @@ class HomeScreen extends ConsumerWidget {
       ),
       // 우측 하단 스캔 토글 버튼: 스캔 중이면 빨간 Stop, 대기 중이면 기본색 Start로 표시한다.
       floatingActionButton: FloatingActionButton.extended(
+        // IndexedStack이 두 탭을 동시에 마운트하므로 Hero 충돌 방지를 위해 null로 비활성화한다.
+        heroTag: null,
         onPressed: () => _toggleScan(ref, isScanning),
         icon: Icon(isScanning ? Icons.stop : Icons.search),
         label: Text(isScanning ? 'Stop Scan' : 'Start Scan'),
@@ -105,8 +107,8 @@ class _StatusBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       color: isScanning
-          ? Colors.green.withOpacity(0.1)
-          : Colors.grey.withOpacity(0.1),
+          ? Colors.green.withValues(alpha: 0.1)
+          : Colors.grey.withValues(alpha: 0.1),
       child: Row(
         children: [
           if (isScanning) ...[
@@ -270,7 +272,7 @@ class _SignalIcon extends StatelessWidget {
             ? Colors.orange
             : Colors.red;
     return CircleAvatar(
-      backgroundColor: color.withOpacity(0.15),
+      backgroundColor: color.withValues(alpha: 0.15),
       child: Icon(Icons.signal_cellular_alt, color: color),
     );
   }

@@ -305,7 +305,14 @@ class MockBLERepository implements BLERepository {
 
     _connectedDevices.remove(deviceId);
     // 연결 해제 시 해당 장치의 모든 알림 구독도 함께 종료한다.
-    _notifyControllers.remove(deviceId)?.close();
+    // 키 형식은 notifyCharacteristic의 '$deviceId:$characteristicUuid'이다.
+    final prefix = '$deviceId:';
+    final keysToRemove =
+        _notifyControllers.keys.where((k) => k.startsWith(prefix)).toList();
+    for (final key in keysToRemove) {
+      final c = _notifyControllers.remove(key);
+      await c?.close();
+    }
     controller.add(BLEConnectionState.disconnected);
   }
 
